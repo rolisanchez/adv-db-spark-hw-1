@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Specific project folders
+datasets/
+
+# Avoid IDE config folders
+python-scripts/.DS_Store/
