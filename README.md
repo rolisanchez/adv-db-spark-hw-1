@@ -18,3 +18,9 @@ If there are changes made, rebuild:
 To enter the container and run scripts from inside:
 
     docker exec -it advdbsparkhw1_master_1 /bin/bash
+
+The python-scripts folder is mounted at /python-scripts inside the container, so files placed there can be executed like:
+
+    python /python-scripts/some_python_script.py
+
+The datasets folder is mounted at /datasets inside the container, so files placed there can be accesed inside the container.
