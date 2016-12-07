@@ -6,6 +6,15 @@ Based on Getty Images "https://github.com/gettyimages/docker-spark"
 
 # Problem description
 
+Using the Weather Dataset provided:
+
+ - Show the top 100 average precipitations for each Station.
+
+Using the Product Rating Dataset provided:
+
+- What are the records that are rated for item_ID 1-10 from user_ID 1-10, and rating is larger than 3 (not included). Order by rating (descending).
+
+
 # Running this project
 To run the container:
     

@@ -23,14 +23,20 @@ def main():
              .set("spark.executor.memory", "1g"))
     sc = SparkContext(conf = conf)
 
-    weather = sc.textFile("/datasets/2016.csv")
+    # Define a display when no DISPLAY is undefined
+    matplotlib.use('Agg')
 
-    weatherParse = weather.map(lambda line : line.split(","))
-    weatherSnow = weatherParse.filter(lambda x: x[2]=="SNOW")
+    # Import weather dataset
+    weatherDataset = sc.textFile("/datasets/2016weather.csv")
 
-    test = weatherParse.first()
-    print "test is ", test
+    # Import user dataset
+    userDataset = sc.textFile("/datasets/userdata.csv")
 
+    # Parse datasets
+    weatherParse = weatherDataset.map(lambda line : line.split(","))
+    userParse = userDataset.map(lambda line : line.split(","))
+
+    # Work on datasets
 
 if __name__ == "__main__":
         main()
