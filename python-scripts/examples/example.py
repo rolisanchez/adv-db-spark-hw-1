@@ -95,5 +95,23 @@ def main():
 
     plt.show()
 
+    snowStations = sqlContext.sql("SELECT  station, COUNT(*) AS snowdays FROM snow2016 WHERE station LIKE 'US%' GROUP BY station ORDER BY station LIMIT 100")
+
+    snowStations.head(5)
+
+    sqlContext.registerDataFrameAsTable(snowStations, "snowdays_2016")
+
+    snowStations_new = sqlContext.sql("SELECT station, snowdays FROM snowdays_2016 ORDER BY snowdays DESC LIMIT 5").collect()
+
+    for row in snowStations_new:
+        print (row)
+
+    # snowStations.write.save("snowStations_temp.parquet")
+
+    # parquetFile = sqlContext.read.load("snowStations_temp.parquet")
+    # parquetFile.registerTempTable("snow_from_parquet")
+
+    # parquetFile.head(5)
+
 if __name__ == "__main__":
         main()
